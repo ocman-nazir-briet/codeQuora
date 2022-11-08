@@ -10,28 +10,34 @@
 <div class="home-container">
   <div>
     <h3>Topics</h3>
+    <hr>
+    <div>
+      <a href="{% url 'home' %}">All</a>
+  </div>
     {% for obj in topic%}
     <div>
-        <a href="{% url 'home' %}">{{obj}}</a>
+        <a href="{% url 'home' %}?q={{obj.name}}">{{obj.name}}</a>
     </div>
     {% endfor %}
   </div>
 
   <div>
     <h3>Rooms</h3>
-    {% for x in room %} @Host: {{x.host}}
-    <hr />
-    Topic: {{x.topic}}
-    <hr />
-    Name: {{x.name}}
-    <hr />
-    Description: {{x.description}}
-    <hr />
-    Created: {{x.created}}
-    <hr />
-    Updated: {{x.updated}}
+    <hr>
+    {% for x in room %} 
+    <h3>@{{x.host}}</h3>
     <a href="{% url 'update-room' x.id %}">Edit</a>
     <a href="{% url 'delete-room' x.id %}">Delete</a>
+    <hr />
+    {{x.topic}}
+    <hr />
+    {{x.name}}
+    <hr />
+    {{x.description}}
+    <hr />
+    {{x.created}}
+    <hr />
+    {{x.updated}}
     <hr />
     <br />
     {% endfor%}

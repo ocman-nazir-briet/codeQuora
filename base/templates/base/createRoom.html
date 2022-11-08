@@ -1,7 +1,7 @@
-this is create room
+<h2>Create New Room</h2>
 <form method="post" action="">
     Inside Form
     {% csrf_token %}
-    {{form}}
+    {{form.as_p}}
     <button type="submit">Submit</button>
 </form>

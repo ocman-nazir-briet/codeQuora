@@ -3,8 +3,9 @@ from .models import *
 from .forms import *  
 
 def index(request):
-    room = Room.objects.all()
     topic = Topic.objects.all()
+    q = request.GET.get('q') if request.GET.get('q')  != None else ''
+    room = Room.objects.filter(topic__name__icontains=q)
 
     return render(request, 'base/home.html', {'room':room, 'topic':topic})
 
