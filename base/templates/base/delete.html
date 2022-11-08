@@ -1,0 +1,7 @@
+this is create room
+<form method="post" action="">
+    {% csrf_token %}
+    Are you sure to Delete? {{room}}
+    <a href={{request.META.HTTP_REFERER}}>Cancel</a>
+    <input type="submit" value="Confirm">
+</form>

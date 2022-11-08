@@ -1,0 +1,40 @@
+{% extends 'main.html' %} {% block content %}
+
+<style>
+  .home-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+  }
+</style>
+
+<div class="home-container">
+  <div>
+    <h3>Topics</h3>
+    {% for obj in topic%}
+    <div>
+        <a href="{% url 'home' %}">{{obj}}</a>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div>
+    <h3>Rooms</h3>
+    {% for x in room %} @Host: {{x.host}}
+    <hr />
+    Topic: {{x.topic}}
+    <hr />
+    Name: {{x.name}}
+    <hr />
+    Description: {{x.description}}
+    <hr />
+    Created: {{x.created}}
+    <hr />
+    Updated: {{x.updated}}
+    <a href="{% url 'update-room' x.id %}">Edit</a>
+    <a href="{% url 'delete-room' x.id %}">Delete</a>
+    <hr />
+    <br />
+    {% endfor%}
+  </div>
+</div>
+{% endblock %}
