@@ -10,6 +10,13 @@
 <body>
     {% include "navbar.html" %}
     
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" role="alert">
+      <strong>Message: </strong> {{ message }}
+      </button>
+    </div>
+    {% endfor %}
+
     {% block content %}
 
     {% endblock %}
